@@ -10,6 +10,8 @@ function ResultPage() {
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const [result, setResult] = useState(null);
   const inputRef = useRef();
+  const API_URL = process.env.REACT_APP_API_URL || '/api';
+
 
   useEffect(() => {
     if (location.state?.result) {
@@ -22,7 +24,7 @@ function ResultPage() {
     if (!query.trim()) return;
 
     try {
-      const response = await fetch('http://localhost:4000/api/search', {
+      const response = await fetch(`${API_URL}/search`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),
@@ -48,7 +50,7 @@ function ResultPage() {
       if (!query.trim()) return setSuggestions([]);
 
       try {
-        const res = await fetch(`http://localhost:4000/api/autocomplete?query=${query}`);
+        const res = await fetch(`${API_URL}/autocomplete?query=${query}`);
         const data = await res.json();
         setSuggestions(data);
         setHighlightedIndex(-1);

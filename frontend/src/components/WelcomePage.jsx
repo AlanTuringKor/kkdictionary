@@ -7,13 +7,14 @@ function WelcomePage() {
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const navigate = useNavigate();
   const inputRef = useRef();
+  const API_URL = process.env.REACT_APP_API_URL || '/api';
 
   useEffect(() => {
     const fetchSuggestions = async () => {
       if (!query.trim()) return setSuggestions([]);
 
       try {
-        const res = await fetch(`http://localhost:4000/api/autocomplete?query=${query}`);
+        const res = await fetch(`${API_URL}/search`);
         const data = await res.json();
         setSuggestions(data);
         setHighlightedIndex(-1);
@@ -31,7 +32,7 @@ function WelcomePage() {
     if (!query.trim()) return;
 
     try {
-      const res = await fetch('http://localhost:4000/api/search', {
+      const res = await fetch(`${API_URL}/autocomplete?query=${query}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),
