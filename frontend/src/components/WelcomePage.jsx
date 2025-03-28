@@ -14,7 +14,7 @@ function WelcomePage() {
       if (!query.trim()) return setSuggestions([]);
 
       try {
-        const res = await fetch(`${API_URL}/search`);
+        const res = await fetch(`${API_URL}/autocomplete?query=${query}`);
         const data = await res.json();
         setSuggestions(data);
         setHighlightedIndex(-1);
@@ -32,7 +32,7 @@ function WelcomePage() {
     if (!query.trim()) return;
 
     try {
-      const res = await fetch(`${API_URL}/autocomplete?query=${query}`, {
+      const res = await fetch(`${API_URL}/search`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),
