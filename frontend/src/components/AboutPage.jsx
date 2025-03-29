@@ -11,7 +11,7 @@ function AboutPage() {
         재미있는 단어들이 계속해서 추가되며, 누구나 자유롭게 탐색하고 배우실 수 있습니다.
       </p>
       <p>
-        아이디어 제안 또는 협업을 원하시면 <strong>team@kkbakwa.app</strong> 으로 연락 주세요!
+        아이디어 제안 또는 협업을 원하시면 <strong>admin@kkdictionary.com</strong> 으로 연락 주세요!
       </p>
     </div>
   );
