@@ -60,6 +60,24 @@ router.post('/search', async (req, res) => {
   }
 });
 
+// ✅ 랜덤 단어 6개 반환
+router.get('/random', async (req, res) => {
+  try {
+    const entries = await Dictionary.aggregate([{ $sample: { size: 6 } }]);
+    const results = entries.map(entry => {
+      const def = entry.definitions?.[0];
+      return {
+        word: entry.word,
+        description: def?.description || '정의 없음',
+        examples: def?.example?.length ? def.example : ['예시 없음'],
+      };
+    });
+    res.json(results);
+  } catch (err) {
+    console.error('🔥 랜덤 단어 에러:', err);
+    res.status(500).json({ error: '랜덤 단어 불러오기 실패' });
+  }
+});
 
 
 module.exports = router;
