@@ -35,25 +35,29 @@ router.get('/autocomplete', async (req, res) => {
 // 🔎 검색 API
 router.post('/search', async (req, res) => {
   const { query } = req.body;
-  try {
-    const entry = await Dictionary.findOne({ word: query });
+  if (!query) return res.status(400).json({ error: 'No query provided' });
 
-    if (!entry) {
-      return res.status(404).json({ error: '단어를 찾을 수 없습니다.' });
+  try {
+    const entries = await Dictionary.find({ word: query });
+
+    if (!entries || entries.length === 0) {
+      return res.status(404).json({ error: 'No result found' });
     }
 
-    const definition = entry.definitions?.[0]?.description?.trim() || '설명이 아직 등록되지 않았습니다.';
-    const examples = entry.definitions?.[0]?.example?.length
-      ? entry.definitions[0].example
-      : ['예시가 아직 등록되지 않았습니다.'];
-
-    res.json({
-      word: entry.word,
-      description: definition,
-      examples
+    // ✅ 결과는 전부 반환
+    const results = entries.map((entry) => {
+      const def = entry.definitions?.[0];
+      return {
+        word: entry.word,
+        description: def?.description || '정의 없음',
+        examples: def?.example?.length ? def.example : ['예시 없음'],
+      };
     });
+    res.json(results);
+    res.json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Server error in search' });
+    console.error(err);
+    res.status(500).json({ error: 'Search error' });
   }
 });
 
