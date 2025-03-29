@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/youruser/kk-dict
+cd /home/alanturingde/kkdictionary
 git pull origin main
 
 cd frontend
