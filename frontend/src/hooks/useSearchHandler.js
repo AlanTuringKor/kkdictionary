@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
+
 const useSearchHandler = (navigate, initialResult = null) => {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);

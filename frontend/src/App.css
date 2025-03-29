@@ -247,3 +247,39 @@ html, body, #root {
 .suggestion-list li.highlighted {
   background-color: rgba(255, 220, 0, 0.3);
 }
+
+.popular-sidebar {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  width: 180px;
+  background-color: #002a50;
+  padding: 20px;
+  color: #FFDC00;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+.popular-sidebar h3 {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #ffe600;
+  padding-bottom: 5px;
+}
+
+.popular-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popular-sidebar li {
+  cursor: pointer;
+  padding: 6px 0;
+  font-size: 1rem;
+}
+
+.popular-sidebar li:hover {
+  text-decoration: underline;
+}

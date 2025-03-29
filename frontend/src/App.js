@@ -7,12 +7,14 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Privacy from './components/Privacy';
 import AboutPage from './components/AboutPage'; 
+import PopularSidebar from './components/PopularSidebar';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <Header />
+      <PopularSidebar />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<WelcomePage />} />

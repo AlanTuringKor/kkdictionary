@@ -23,6 +23,10 @@ mongoose.connect(process.env.MONGO_URI, {
 const dictRoutes = require('./routes/dictionary');
 app.use('/api', dictRoutes);
 
+const popularRoutes = require('./routes/popular');
+app.use('/api/popular', popularRoutes); // ✅ 추가
+
+
 // 🧾 프론트 정적 파일 제공 + SPA 라우팅 처리
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/build')));
