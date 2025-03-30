@@ -13,17 +13,19 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <Header />
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/about" element={<AboutPage />} /> 
-          <Route path="/result" element={<ResultPage />} />
-          <Route path="/error" element={<ErrorPage />} />
-          <Route path="/privacy" element={<Privacy />} />
-        </Routes>
-      </main>
-      <Footer />
+      <div className="app-container"> {/* 여기가 flex column */}
+        <Header />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/result" element={<ResultPage />} />
+            <Route path="/error" element={<ErrorPage />} />
+            <Route path="/privacy" element={<Privacy />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }
