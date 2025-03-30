@@ -1,0 +1,6 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://kkdictionary.com/sitemap.xml
+Sitemap: https://크크백과.com/sitemap.xml
+Sitemap: https://키키백과.com/sitemap.xml
