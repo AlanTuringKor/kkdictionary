@@ -14,7 +14,6 @@ function App() {
   return (
     <Router>
       <Header />
-      <PopularSidebar />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<WelcomePage />} />
