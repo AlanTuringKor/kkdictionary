@@ -79,5 +79,19 @@ router.get('/random', async (req, res) => {
   }
 });
 
+router.post('/add', async (req, res) => {
+  const newWord = req.body;
+
+  try {
+    const dictionaryEntry = new Dictionary(newWord);
+    await dictionaryEntry.save();
+    res.status(201).json({ message: 'Word added!' });
+  } catch (error) {
+    console.error('Insertion error:', error);
+    res.status(500).json({ error: 'Insertion failed' });
+  }
+});
+
+
 
 module.exports = router;
